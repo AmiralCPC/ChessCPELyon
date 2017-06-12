@@ -15,11 +15,6 @@ public class Roi extends AbstractPiece implements Pieces{
     }
 
     @Override
-    public String getName() {
-        return "Roi";
-    }
-
-    @Override
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
         if(xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8){
             return((xFinal-this.getX()==1)&&(yFinal-this.getY()==1));

@@ -29,7 +29,12 @@ public abstract class AbstractPiece implements Pieces{
     public String toString() {
         return this.getName() +
                 ", x = " + coord.x +
-                ", y = " + coord.y;
+                ", y = " + coord.y+ "\n";
+    }
+
+    @Override
+    public String getName(){
+        return this.getClass().getSimpleName();
     }
 
     public boolean move(int xFinal, int yFinal) {

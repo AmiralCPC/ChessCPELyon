@@ -13,10 +13,6 @@ public class Tour extends AbstractPiece implements Pieces{
         return false;
     }
 
-    public String getName() {
-        return "Tour";
-    }
-
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
 
         return(((xFinal != this.getX() && yFinal == this.getY())

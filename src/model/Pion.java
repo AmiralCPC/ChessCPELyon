@@ -20,14 +20,7 @@ public class Pion extends AbstractPiece implements Pieces{
     }
 
     @Override
-    public String getName() {
-        return "Pion";
-    }
-
-    @Override
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
-
-
 
         if((xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8)){
 
@@ -44,9 +37,4 @@ public class Pion extends AbstractPiece implements Pieces{
 
     }
 
-    @Override
-    public boolean move(int xFinal, int yFinal) {
-        super.move(xFinal,yFinal);
-        return true;
-    }
 }

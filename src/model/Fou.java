@@ -12,17 +12,9 @@ public class Fou extends AbstractPiece implements Pieces{
         return false;
     }
 
-    public String getName() {
-        return "Fou";
-    }
-
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
         return (Math.abs(xFinal - this.getX()) == Math.abs(yFinal - this.getY()))
                 && (xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8);
     }
 
-    public boolean move(int xFinal, int yFinal) {
-        super.move(xFinal,yFinal);
-        return true;
-    }
 }
