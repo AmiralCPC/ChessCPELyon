@@ -28,6 +28,6 @@ public class Tour extends AbstractPiece implements Pieces{
     }
 
     public boolean move(int xFinal, int yFinal) {
-        super.move(xFinal,yFinal);
+       return super.move(xFinal,yFinal);
     }
 }
