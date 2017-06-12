@@ -5,6 +5,10 @@ package model;
  */
 public class Roi extends AbstractPiece implements Pieces{
 
+    Roi(Couleur couleur, Coord coord) {
+        super(couleur, coord);
+    }
+
     @Override
     public boolean capture() {
         return false;
@@ -12,11 +16,14 @@ public class Roi extends AbstractPiece implements Pieces{
 
     @Override
     public String getName() {
-        return null;
+        return "Roi";
     }
 
     @Override
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
+        if(xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8){
+            return((xFinal-this.getX()==1)&&(yFinal-this.getY()==1));
+        }
         return false;
     }
 }
