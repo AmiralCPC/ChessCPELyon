@@ -1,15 +1,42 @@
 package model;
 
+import tools.ChessPiecesFactory;
+
+import java.util.List;
+
 /**
  * Created by CheckDaGus on 12/06/2017.
  */
-public class Echiquier {
+public class Echiquier implements BoardGames{
+
+    private Jeu jeuNoir = new Jeu(Couleur.NOIR);
+    private Jeu jeuBlanc = new Jeu(Couleur.BLANC);
+    private boolean tourBlanc = true;
+    private String message;
+
+    public Echiquier() {}
+
     public Object getPiecesIHM() {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "Echiquier{\n"
+                +"Jeu Noir: "+jeuNoir.toString()+"\n"
+                +"Jeu Blanc: " + jeuBlanc +"\n"
+                +"Le " + (tourBlanc?"Blanc":"Noir")+" joue\n"
+                +"Le message est: " + message + '\n'
+                +"}";
+    }
+
+    //methodes de manipulation du message de log
     public String getMessage() {
-        return "";
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal) {
@@ -21,6 +48,7 @@ public class Echiquier {
     }
 
     public void switchJoueur() {
+        this.tourBlanc = !this.tourBlanc;
     }
 
     public boolean isEnd() {
@@ -32,6 +60,16 @@ public class Echiquier {
     }
 
     public Couleur getPieceColor(int x, int y) {
-        return Couleur.NOIR;
+        return Couleur.BLANC;
+    }
+
+    public static void main(String[] args) {
+
+        Echiquier echiquier = new Echiquier();
+        System.out.println(echiquier);
+
+        echiquier.switchJoueur();
+        System.out.println(echiquier);
+
     }
 }
