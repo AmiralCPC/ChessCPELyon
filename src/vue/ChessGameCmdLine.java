@@ -7,7 +7,7 @@ import java.util.Observer;
 import model.Coord;
 import model.Couleur;
 import model.PieceIHM;
-import controler.controlerLocal.ChessGameControler;
+import controler.ChessGameControler;
 
 
 
