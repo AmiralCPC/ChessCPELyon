@@ -1,8 +1,5 @@
 package model;
 
-import model.Coord;
-import model.Couleur;
-
 /**
  * Created by CheckDaGus on 12/06/2017.
  */

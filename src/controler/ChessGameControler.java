@@ -3,6 +3,7 @@ package controler;
 import model.Coord;
 import model.ChessGame;
 import controler.AbstractChessGameControler;
+import model.Couleur;
 
 /**
  * @author francoise.perrin
@@ -26,7 +27,9 @@ public class ChessGameControler extends AbstractChessGameControler {
 	 */
 	@Override
 	public boolean isPlayerOK(Coord initCoord) {
-		return false;
+		Couleur couleurPiece = chessGame.getPieceColor(initCoord.x, initCoord.y);
+		Couleur couleurJoueur = chessGame.getColorCurrentPlayer();
+		return couleurJoueur.equals(couleurPiece);
 	}
 	
 	/* (non-Javadoc)

@@ -53,10 +53,11 @@ public class Echiquier implements BoardGames{
     }
 
     public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
-
-        this.switchJoueur();
-        return this.tourBlanc?this.jeuBlanc.move(xInit, yInit, xFinal, yFinal)
-                        :this.jeuNoir.move(xInit, yInit, xFinal, yFinal);
+        boolean ret = this.tourBlanc?this.jeuBlanc.move(xInit, yInit, xFinal, yFinal)
+                :this.jeuNoir.move(xInit, yInit, xFinal, yFinal);
+        if(ret)
+            this.switchJoueur();
+        return ret;
 
     }
 
