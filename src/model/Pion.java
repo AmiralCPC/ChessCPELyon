@@ -8,6 +8,8 @@ import model.Couleur;
  */
 public class Pion extends AbstractPiece implements Pieces{
 
+    private boolean firstMove = true;
+
     public Pion(Couleur couleur, Coord coord) {
         super(couleur, coord);
     }
@@ -25,18 +27,17 @@ public class Pion extends AbstractPiece implements Pieces{
     @Override
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
 
-        //Verification premier mouvement pion blanc
+
+
         if((xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8)){
-            if(this.getCouleur() == Couleur.BLANC && this.getY() == 6){
-                return((Math.abs(this.getY()-yFinal)<3)
-                        && (this.getX() == xFinal));}
 
-            //Verification premier mouvement pion noir
-            if(this.getCouleur() == Couleur.NOIR && this.getY() == 1){
-                return((Math.abs(this.getY()-yFinal)<3)
-                        && (this.getX() == xFinal));}
+            //Verification premier mouvement pion
+            if(this.firstMove == true){
+                this.firstMove = !this.firstMove;
+                return((Math.abs(this.getY()-yFinal)<3) && (this.getX() == xFinal));
+            }
 
-            //Verification mouvement vertical pion
+            //Verification mouvement pion
             return(Math.abs(this.getY()-yFinal)==1 && (xFinal == this.getX()));
         }
         return false;
