@@ -27,21 +27,27 @@ public class Pion extends AbstractPiece implements Pieces{
     @Override
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
 
-
-
         if((xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8)){
 
             //Verification premier mouvement pion
-            if(this.firstMove == true){
-                this.firstMove = !this.firstMove;
-                return((Math.abs(this.getY()-yFinal)<3) && (this.getX() == xFinal));
+            if(this.firstMove == true) {
+                if (!(this.getX()==xFinal && this.getY()==yFinal)){
+                    this.firstMove = !this.firstMove;
+                    return (
+                            ((this.getY() - yFinal) < 3
+                            && this.getX() == xFinal
+                            && this.getCouleur() == Couleur.BLANC)
+                            ||
+                            (yFinal - this.getY() < 3)
+                            && this.getX() == xFinal
+                            && this.getCouleur() == Couleur.NOIR);
+                }
             }
 
             //Verification mouvement pion
             return(Math.abs(this.getY()-yFinal)==1 && (xFinal == this.getX()));
         }
         return false;
-
     }
 
     @Override
