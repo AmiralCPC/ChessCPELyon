@@ -104,3 +104,4 @@ public class Jeu implements Game {
         System.out.println(jeu.isMoveOk(1,0,3,1,false,false));
     }
 }
+ 
