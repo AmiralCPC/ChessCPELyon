@@ -69,11 +69,18 @@ public class Echiquier implements BoardGames{
     }
 
     public Couleur getColorCurrentPlayer() {
-        return Couleur.NOIR;
+
+        return (tourBlanc?Couleur.BLANC:Couleur.NOIR);
     }
 
     public Couleur getPieceColor(int x, int y) {
-        return Couleur.BLANC;
+        if(jeuBlanc.getPieceColor(x,y)!=null){
+            return Couleur.BLANC;
+        }else if(jeuNoir.getPieceColor(x,y)!=null){
+            return Couleur.NOIR;
+        }else{
+            return null;
+        }
     }
 
     public static void main(String[] args) {
