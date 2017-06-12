@@ -25,7 +25,9 @@ public class Tour extends AbstractPiece implements Pieces{
     @Override
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
 
-        return((xFinal != this.getX() && yFinal == this.getY()) ||(xFinal == this.getX() && yFinal != this.getY()));
+        return((xFinal != this.getX() && yFinal == this.getY())
+                ||(xFinal == this.getX() && yFinal != this.getY())
+                ||(xFinal == this.getX() && yFinal == this.getY()));
     }
 
     @Override
