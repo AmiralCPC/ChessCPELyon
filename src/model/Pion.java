@@ -26,17 +26,20 @@ public class Pion extends AbstractPiece implements Pieces{
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
 
         //Verification premier mouvement pion blanc
-        if(this.getCouleur() == Couleur.BLANC && this.getY() == 6){
-            return((Math.abs(this.getY()-yFinal)<3)
-                    && (this.getX() == xFinal));}
+        if((xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8)){
+            if(this.getCouleur() == Couleur.BLANC && this.getY() == 6){
+                return((Math.abs(this.getY()-yFinal)<3)
+                        && (this.getX() == xFinal));}
 
-        //Verification premier mouvement pion noir
-        if(this.getCouleur() == Couleur.NOIR && this.getY() == 1){
-            return((Math.abs(this.getY()-yFinal)<3)
-                    && (this.getX() == xFinal));}
+            //Verification premier mouvement pion noir
+            if(this.getCouleur() == Couleur.NOIR && this.getY() == 1){
+                return((Math.abs(this.getY()-yFinal)<3)
+                        && (this.getX() == xFinal));}
 
-        //Verification mouvement vertical pion
-        return(Math.abs(this.getY()-yFinal)==1 && (xFinal == this.getX()));
+            //Verification mouvement vertical pion
+            return(Math.abs(this.getY()-yFinal)==1 && (xFinal == this.getX()));
+        }
+        return false;
 
     }
 
