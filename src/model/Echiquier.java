@@ -2,6 +2,7 @@ package model;
 
 import tools.ChessPiecesFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,9 @@ public class Echiquier implements BoardGames{
     }
 
     public Object getPiecesIHM() {
-        return null;
+        List<PieceIHMs> listPiecesIHM = new ArrayList<PieceIHMs>(this.jeuNoir.getPiecesIHM());
+        listPiecesIHM.addAll(this.jeuBlanc.getPiecesIHM());
+        return listPiecesIHM;
     }
 
     @Override
@@ -44,11 +47,17 @@ public class Echiquier implements BoardGames{
     }
 
     public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal) {
-        return false;
+        return (this.tourBlanc?
+                this.jeuBlanc.isMoveOk(xInit, yInit, xFinal, yFinal, false, false)
+                :this.jeuNoir.isMoveOk(xInit, yInit, xFinal, yFinal,false, false));
     }
 
     public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
-        return false;
+
+        this.switchJoueur();
+        return this.tourBlanc?this.jeuBlanc.move(xInit, yInit, xFinal, yFinal)
+                        :this.jeuNoir.move(xInit, yInit, xFinal, yFinal);
+
     }
 
     public void switchJoueur() {
