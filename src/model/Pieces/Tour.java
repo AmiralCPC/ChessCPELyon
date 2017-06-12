@@ -12,17 +12,14 @@ public class Tour extends AbstractPiece implements Pieces{
         super(couleur, coord);
     }
 
-    @Override
     public boolean capture() {
         return false;
     }
 
-    @Override
     public String getName() {
         return "Tour";
     }
 
-    @Override
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
 
         return((xFinal != this.getX() && yFinal == this.getY())
@@ -30,8 +27,7 @@ public class Tour extends AbstractPiece implements Pieces{
                 ||(xFinal == this.getX() && yFinal == this.getY()));
     }
 
-    @Override
     public boolean move(int xFinal, int yFinal) {
-        return false;
+        super.move(xFinal,yFinal);
     }
 }
