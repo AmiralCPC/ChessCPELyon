@@ -36,10 +36,7 @@ public abstract class AbstractPiece implements Pieces{
     }
 
     public boolean move(int xFinal, int yFinal) {
-        if(isMoveOk(xFinal,yFinal,false,false)) {
-            this.coord = new Coord(xFinal, yFinal);
-            return true;
-        }
-        return false;
+        this.coord = new Coord(xFinal, yFinal);
+        return true;
     }
 }
