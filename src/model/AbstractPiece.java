@@ -1,7 +1,4 @@
-package model.Pieces;
-
-import model.Coord;
-import model.Couleur;
+package model;
 
 /**
  * Created by Damien on 12/06/2017.
