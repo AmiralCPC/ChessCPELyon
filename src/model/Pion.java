@@ -8,7 +8,7 @@ import model.Couleur;
  */
 public class Pion extends AbstractPiece implements Pieces{
 
-    Pion(Couleur couleur, Coord coord) {
+    public Pion(Couleur couleur, Coord coord) {
         super(couleur, coord);
     }
 

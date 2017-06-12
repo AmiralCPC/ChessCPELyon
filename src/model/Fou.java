@@ -4,7 +4,7 @@ package model;
  * Created by Damien on 12/06/2017.
  */
 public class Fou extends AbstractPiece implements Pieces{
-    Fou(Couleur couleur, Coord coord) {
+    public Fou(Couleur couleur, Coord coord) {
         super(couleur, coord);
     }
 

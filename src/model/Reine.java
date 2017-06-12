@@ -4,7 +4,7 @@ package model;
  * Created by Damien on 12/06/2017.
  */
 public class Reine extends AbstractPiece implements Pieces {
-    Reine(Couleur couleur, Coord coord) {
+    public Reine(Couleur couleur, Coord coord) {
         super(couleur, coord);
     }
 

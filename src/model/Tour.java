@@ -5,7 +5,7 @@ package model;
  */
 public class Tour extends AbstractPiece implements Pieces{
 
-    Tour(Couleur couleur, Coord coord) {
+    public Tour(Couleur couleur, Coord coord) {
         super(couleur, coord);
     }
 
