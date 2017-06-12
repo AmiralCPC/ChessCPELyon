@@ -28,4 +28,10 @@ public abstract class AbstractPiece implements Pieces{
         return coord.y;
     }
 
+    @Override
+    public String toString() {
+        return this.getName() +
+                ", x = " + coord.x +
+                ", y = " + coord.y;
+    }
 }
