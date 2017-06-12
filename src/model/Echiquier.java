@@ -9,12 +9,16 @@ import java.util.List;
  */
 public class Echiquier implements BoardGames{
 
-    private Jeu jeuNoir = new Jeu(Couleur.NOIR);
-    private Jeu jeuBlanc = new Jeu(Couleur.BLANC);
-    private boolean tourBlanc = true;
+    private Jeu jeuNoir;
+    private Jeu jeuBlanc;
+    private boolean tourBlanc;
     private String message;
 
-    public Echiquier() {}
+    public Echiquier() {
+        jeuNoir = new Jeu(Couleur.NOIR);
+        jeuBlanc = new Jeu(Couleur.BLANC);
+        tourBlanc = true;
+    }
 
     public Object getPiecesIHM() {
         return null;
@@ -35,7 +39,7 @@ public class Echiquier implements BoardGames{
         return message;
     }
 
-    public void setMessage(String message) {
+    private void setMessage(String message) {
         this.message = message;
     }
 
