@@ -40,8 +40,11 @@ public class Jeu implements Game {
     @Override
     public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
         Pieces piece = findPiece(xInit,yInit);
-        if(piece != null)
-            return piece.move(xFinal,yFinal);
+        if(piece != null){
+            boolean flag = piece.move(xFinal,yFinal);
+            if (flag && isCatchOk(xFinal, yFinal))
+                findPiece(xFinal, yFinal).capture();
+        }
         return false;
     }
 
