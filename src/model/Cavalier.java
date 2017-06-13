@@ -1,5 +1,8 @@
 package model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Created by Damien on 12/06/2017.
  */
@@ -21,5 +24,12 @@ public class Cavalier extends AbstractPiece implements Pieces {
                     || (Math.abs(xFinal - this.getX()) == 1 && Math.abs(yFinal - this.getY()) == 2);
         }
         return false;
+    }
+
+    @Override
+    public List<Coord> getPathCoords(int xFinal, int yFinal) {
+        List<Coord> coords = new LinkedList<Coord>();
+        coords.add(new Coord(xFinal, yFinal));
+        return coords;
     }
 }

@@ -85,6 +85,14 @@ public class Jeu implements Game {
         return list;
     }
 
+    public List<Coord> getPathCoord(int xInit, int yInit, int xFinal, int yFinal){
+        Pieces piece = findPiece(xInit,yInit);
+        if(piece != null){
+            return piece.getPathCoords(xFinal,yFinal);
+        }
+        return null;
+    }
+
     public void setCastling(){
         castling = !castling;
     }

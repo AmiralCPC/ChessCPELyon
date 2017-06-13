@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 /**
  * Created by CheckDaGus on 12/06/2017.
  */
@@ -20,5 +22,10 @@ public class Roi extends AbstractPiece implements Pieces{
             return((xFinal-this.getX()==1)&&(yFinal-this.getY()==1));
         }
         return false;
+    }
+
+    @Override
+    public List<Coord> getPathCoords(int xFinal, int yFinal) {
+        return null;
     }
 }

@@ -1,5 +1,8 @@
 package model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Created by CheckDaGus on 12/06/2017.
  */
@@ -40,6 +43,16 @@ public class Pion extends AbstractPiece implements Pieces{
             return(Math.abs(this.getY()-yFinal)==1 && (xFinal == this.getX()));
         }
         return false;
+    }
+
+    @Override
+    public List<Coord> getPathCoords(int xFinal, int yFinal) {
+        int j = this.getCouleur() == Couleur.NOIR?1:-1;
+        List<Coord> coords = new LinkedList<Coord>();
+        for(int i=1;i<=Math.abs(yFinal-this.getY());i++){
+            coords.add(new Coord(this.getX(), this.getY()+ j*i));
+        }
+        return coords;
     }
 
 }

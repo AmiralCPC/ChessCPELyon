@@ -47,9 +47,12 @@ public class Echiquier implements BoardGames{
     }
 
     public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal) {
-        return (this.tourBlanc?
+        boolean ret = (this.tourBlanc?
                 this.jeuBlanc.isMoveOk(xInit, yInit, xFinal, yFinal, false, false)
                 :this.jeuNoir.isMoveOk(xInit, yInit, xFinal, yFinal,false, false));
+        if(ret)
+            ret = ret&sansColisions(xInit,yInit,xFinal,yFinal);
+        return ret;
     }
 
     public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
@@ -82,6 +85,14 @@ public class Echiquier implements BoardGames{
         }else{
             return null;
         }
+    }
+
+    private boolean sansColisions(int xInit, int yInit, int xFinal, int yFinal){
+       List<Coord> coords = this.tourBlanc?jeuBlanc.getPathCoord(xInit,yInit,xFinal,yFinal):jeuNoir.getPathCoord(xInit,yInit,xFinal,yFinal);
+       for(Coord coord:coords){
+           if (jeuBlanc.isPieceHere(coord.x,coord.y) ||jeuNoir.isPieceHere(coord.x,coord.y)) return false;
+       }
+       return true;
     }
 
     public static void main(String[] args) {
