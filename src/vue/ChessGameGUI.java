@@ -96,26 +96,14 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         int yDepart = (nbCase - xDepart)/8;
 
         isPlayerOk = chessGameControler.isPlayerOK(new Coord(xDepart, yDepart));
-        /*
-        if (c instanceof JLabel){
-            Container parent = c.getParent();
-            parent.remove(0);
-            parent.add( chessPiece );
-        }
-        else {
-            Container parent = (Container)c;
-            parent.add( chessPiece );
-        }
-        */
 
         if(isPlayerOk){
             isMoveGood = chessGameControler.move(new Coord(xDepart, yDepart), new Coord(xFinal, yFinal));
             if(isMoveGood){
                 aDelete = (JPanel) chessBoard.getComponent(nbCase);
+                aDelete.removeAll();
             }
         }
-
-
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -143,7 +131,6 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         int nbCase;
         for(PieceIHM piece:piecesIHM){
             path = ChessImageProvider.getImageFile(piece.getNamePiece(),piece.getCouleur());
-            System.out.println(path);
             nbCase= piece.getY()*8+piece.getX();
             panel = (JPanel)chessBoard.getComponent(nbCase);
             image = new JLabel( new ImageIcon(path) );
