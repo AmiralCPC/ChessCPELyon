@@ -41,7 +41,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         for (int i = 0; i < 64; i++) {
             JPanel square = new JPanel( new BorderLayout() );
             chessBoard.add( square );
-
+            square.setName(""+i);
             int row = (i / 8) % 2;
             if (row == 0)
                 square.setBackground( i % 2 == 0 ? Color.black : Color.white );
@@ -52,6 +52,19 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     }
 
     public void mousePressed(MouseEvent e){
+        chessPiece = null;
+        Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
+
+        if (c instanceof JPanel)
+            return;
+
+        Point parentLocation = c.getParent().getLocation();
+        xAdjustment = parentLocation.x - e.getX();
+        yAdjustment = parentLocation.y - e.getY();
+        chessPiece = (JLabel)c;
+        chessPiece.setLocation(e.getX() + xAdjustment, e.getY() + yAdjustment);
+        chessPiece.setSize(chessPiece.getWidth(), chessPiece.getHeight());
+        layeredPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
 
     }
 
@@ -65,7 +78,30 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     //Drop the chess piece back onto the chess board
 
     public void mouseReleased(MouseEvent e) {
+        if(chessPiece == null) return;
 
+        chessPiece.setVisible(false);
+        Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
+        int nbCase  =Integer.parseInt(c.getName());
+        int xFinal = nbCase%8;
+        int yFinal = (nbCase - xFinal)/8;
+
+        nbCase =Integer.parseInt(chessPiece.getName());
+        int xDepart = nbCase%8;
+        int yDepart = (nbCase - xDepart)/8;
+
+
+        if (c instanceof JLabel){
+            Container parent = c.getParent();
+            parent.remove(0);
+            parent.add( chessPiece );
+        }
+        else {
+            Container parent = (Container)c;
+            parent.add( chessPiece );
+        }
+
+        chessPiece.setVisible(true);
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -90,11 +126,14 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         String path;
         JPanel panel;
         JLabel image;
+        int nbCase;
         for(PieceIHM piece:piecesIHM){
             path = ChessImageProvider.getImageFile(piece.getNamePiece(),piece.getCouleur());
             System.out.println(path);
-            panel = (JPanel)chessBoard.getComponent(piece.getY()*8+piece.getX());
+            nbCase= piece.getY()*8+piece.getX();
+            panel = (JPanel)chessBoard.getComponent(nbCase);
             image = new JLabel( new ImageIcon(path) );
+            image.setName(""+nbCase);
             panel.add(image);
         }
     }
