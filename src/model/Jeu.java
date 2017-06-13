@@ -32,6 +32,11 @@ public class Jeu implements Game {
         return false;
     }
 
+    public boolean isCatchOk(int x, int y){
+        Pieces ret = this.findPiece(x,y);
+        return ret.isCatchOk(x,y);
+    }
+
     @Override
     public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
         Pieces piece = findPiece(xInit,yInit);

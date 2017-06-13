@@ -47,14 +47,9 @@ public class Echiquier implements BoardGames{
     }
 
     public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal) {
-<<<<<<< Updated upstream
         boolean ret = (this.tourBlanc?
-                this.jeuBlanc.isMoveOk(xInit, yInit, xFinal, yFinal, false, false)
-=======
-        return (this.tourBlanc?
                 this.jeuBlanc.isMoveOk(xInit, yInit, xFinal, yFinal, true, false)
->>>>>>> Stashed changes
-                :this.jeuNoir.isMoveOk(xInit, yInit, xFinal, yFinal,false, false));
+                :this.jeuNoir.isMoveOk(xInit, yInit, xFinal, yFinal,true, false));
         if(ret)
             ret = ret&sansColisions(xInit,yInit,xFinal,yFinal);
         return ret;

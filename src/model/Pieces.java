@@ -16,4 +16,5 @@ public interface Pieces {
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible);
     public boolean move(int xFinal, int yFinal);
     public List<Coord> getPathCoords(int xFinal, int yFinal);
+    public boolean isCatchOk(int x, int y);
 }
