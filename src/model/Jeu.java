@@ -42,6 +42,11 @@ public class Jeu implements Game {
 
     @Override
     public boolean capture(int xCatch, int yCatch) {
+
+        if(isPieceHere(xCatch, yCatch)){
+            return this.findPiece(xCatch, yCatch).capture();
+        }
+
         return false;
     }
 

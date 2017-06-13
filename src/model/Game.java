@@ -47,7 +47,7 @@ public interface Game  {
 	 * @return true si la piece aux coordonnées finales
 	 * a été capturée
 	 */
-	public boolean capture(int xCatch, int yCatch) ;
+	public boolean capture(int xCatch, int yCatch);
 
 
 

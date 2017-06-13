@@ -15,7 +15,14 @@ public class Pion extends AbstractPiece implements Pieces{
     }
 
     @Override
-    public boolean capture() {
+    public boolean isCatchOk(int xCatch, int yCatch){
+
+        if(this.getCouleur()==Couleur.BLANC){
+            return(Math.abs(this.getX()-xCatch) == 1 && this.getY()-yCatch == 1);
+        }
+        if(this.getCouleur()==Couleur.NOIR){
+            return(Math.abs(this.getX()-xCatch) == 1 && this.getY()-yCatch == -1);
+        }
         return false;
     }
 

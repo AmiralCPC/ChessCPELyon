@@ -32,13 +32,25 @@ public abstract class AbstractPiece implements Pieces{
                 ", y = " + coord.y+ "\n";
     }
 
+    public boolean isCatchOk(int xCatch, int yCatch){
+        return true;
+    }
+
     @Override
     public String getName(){
         return this.getClass().getSimpleName();
     }
 
     public boolean move(int xFinal, int yFinal) {
-        this.coord = new Coord(xFinal, yFinal);
+        this.coord.x = xFinal;
+        this.coord.y = yFinal;
+        return true;
+    }
+
+    @Override
+    public boolean capture(){
+        this.coord.x = -1;
+        this.coord.y = -1;
         return true;
     }
 }
