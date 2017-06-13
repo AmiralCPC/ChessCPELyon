@@ -2,6 +2,7 @@ package vue;
 
 import controler.ChessGameControler;
 import controler.ChessGameControlers;
+import model.Coord;
 import model.PieceIHM;
 import tools.ChessImageProvider;
 
@@ -78,6 +79,10 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     //Drop the chess piece back onto the chess board
 
     public void mouseReleased(MouseEvent e) {
+        boolean isPlayerOk;
+        boolean isMoveGood;
+        JPanel aDelete;
+
         if(chessPiece == null) return;
 
         chessPiece.setVisible(false);
@@ -90,7 +95,8 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         int xDepart = nbCase%8;
         int yDepart = (nbCase - xDepart)/8;
 
-
+        isPlayerOk = chessGameControler.isPlayerOK(new Coord(xDepart, yDepart));
+        /*
         if (c instanceof JLabel){
             Container parent = c.getParent();
             parent.remove(0);
@@ -100,8 +106,16 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
             Container parent = (Container)c;
             parent.add( chessPiece );
         }
+        */
 
-        chessPiece.setVisible(true);
+        if(isPlayerOk){
+            isMoveGood = chessGameControler.move(new Coord(xDepart, yDepart), new Coord(xFinal, yFinal));
+            if(isMoveGood){
+                aDelete = (JPanel) chessBoard.getComponent(nbCase);
+            }
+        }
+
+
     }
 
     public void mouseClicked(MouseEvent e) {
