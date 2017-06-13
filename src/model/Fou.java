@@ -24,7 +24,7 @@ public class Fou extends AbstractPiece implements Pieces{
         int yDepart = this.getY();
         int i = xDepart<xFinal? 1:-1;
         int j = yDepart<yFinal? 1:-1;
-        while(xDepart != xFinal && yDepart !=yFinal){
+        while(xDepart != xFinal-i && yDepart !=yFinal-j){
             xDepart += i;
             yDepart += j;
             coords.add(new Coord(xDepart,yDepart));

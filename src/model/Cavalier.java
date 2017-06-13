@@ -29,7 +29,7 @@ public class Cavalier extends AbstractPiece implements Pieces {
     @Override
     public List<Coord> getPathCoords(int xFinal, int yFinal) {
         List<Coord> coords = new LinkedList<Coord>();
-        coords.add(new Coord(xFinal, yFinal));
+        //coords.add(new Coord(xFinal, yFinal));
         return coords;
     }
 }

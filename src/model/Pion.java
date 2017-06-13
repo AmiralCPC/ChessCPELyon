@@ -56,7 +56,7 @@ public class Pion extends AbstractPiece implements Pieces{
     public List<Coord> getPathCoords(int xFinal, int yFinal) {
         int j = this.getCouleur() == Couleur.NOIR?1:-1;
         List<Coord> coords = new LinkedList<Coord>();
-        for(int i=1;i<=Math.abs(yFinal-this.getY());i++){
+        for(int i=1;i<Math.abs(yFinal-this.getY());i++){
             coords.add(new Coord(this.getX(), this.getY()+ j*i));
         }
         return coords;
