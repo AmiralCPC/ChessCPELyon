@@ -1,5 +1,6 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -19,13 +20,13 @@ public class Roi extends AbstractPiece implements Pieces{
     @Override
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
         if(xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8){
-            return((xFinal-this.getX()==1)&&(yFinal-this.getY()==1));
+            return(Math.abs(xFinal-this.getX())<=1&&Math.abs(yFinal-this.getY())<=1);
         }
         return false;
     }
 
     @Override
     public List<Coord> getPathCoords(int xFinal, int yFinal) {
-        return null;
+        return new LinkedList<Coord>();
     }
 }
