@@ -12,10 +12,6 @@ public class Tour extends AbstractPiece implements Pieces{
         super(couleur, coord);
     }
 
-    public boolean capture() {
-        return false;
-    }
-
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
 
         return(((xFinal != this.getX() && yFinal == this.getY())

@@ -32,13 +32,6 @@ public class Jeu implements Game {
         return false;
     }
 
-    public boolean isCatchOk(int x, int y){
-        Pieces ret = this.findPiece(x,y);
-        if(ret != null)
-            return ret.isCatchOk(x,y);
-        return false;
-    }
-
     @Override
     public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
         Pieces piece = findPiece(xInit,yInit);
@@ -55,7 +48,6 @@ public class Jeu implements Game {
         if(isPieceHere(xCatch, yCatch)){
             return this.findPiece(xCatch, yCatch).capture();
         }
-
         return false;
     }
 
