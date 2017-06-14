@@ -74,6 +74,7 @@ public class Echiquier implements BoardGames{
 
     public void switchJoueur() {
         this.tourBlanc = !this.tourBlanc;
+        System.out.println(this.tourBlanc?"Tour du joueur blanc":"Tour du joueur noir");
     }
 
     public boolean isEnd() {

@@ -4,6 +4,7 @@ import tools.ChessPiecesFactory;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Damien on 12/06/2017.
@@ -54,8 +55,24 @@ public class Jeu implements Game {
     }
 
     public void promotion(Pieces promopion){
-        pieces.add(new Reine(this.couleur,new Coord(promopion.getX(),promopion.getY())));
-        System.out.println("Promotion de "+promopion.getName()+" "+promopion.getCouleur());
+        System.out.print("Promotion:\n1. Tour\n2. Cavalier\n3. Reine\n4. Fou\n");
+        Scanner reader = new Scanner(System.in);
+        int choix = reader.nextInt();
+        switch (choix){
+            case 1 :
+                pieces.add(new Tour(this.couleur,new Coord(promopion.getX(),promopion.getY())));
+                break;
+            case 2 :
+                pieces.add(new Cavalier(this.couleur,new Coord(promopion.getX(),promopion.getY())));
+                break;
+            case 3 :
+                pieces.add(new Reine(this.couleur,new Coord(promopion.getX(),promopion.getY())));
+                break;
+            case 4 :
+                pieces.add(new Fou(this.couleur,new Coord(promopion.getX(),promopion.getY())));
+                break;
+
+        }
         promopion.capture();
     }
 
