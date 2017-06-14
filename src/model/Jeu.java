@@ -41,9 +41,9 @@ public class Jeu implements Game {
 
             flag = piece.move(xFinal,yFinal);
 
-            if(flag && piece.getName()=="Pion"){
+            if(flag && piece.getName().equals("Pion")){
                 if ((piece.getCouleur()==Couleur.BLANC && yFinal == 0)||(piece.getCouleur()==Couleur.NOIR && yFinal == 7))
-                    piece = promotion(piece);
+                    promotion(piece);
             }
 
             return flag;
@@ -51,8 +51,9 @@ public class Jeu implements Game {
         return false;
     }
 
-    public Pieces promotion(Pieces promopion){
-        return new Reine(promopion.getCouleur(), new Coord(promopion.getX(),promopion.getY()));
+    public void promotion(Pieces promopion){
+        pieces.add(new Reine(this.couleur,new Coord(promopion.getX(),promopion.getY())));
+        promopion.capture();
     }
 
     @Override
