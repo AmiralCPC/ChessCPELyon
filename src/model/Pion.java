@@ -52,7 +52,8 @@ public class Pion extends AbstractPiece implements Pieces{
             }
 
             //Verification mouvement pion
-            return(Math.abs(this.getY()-yFinal)==1 && (xFinal == this.getX()));
+            return((this.getCouleur()== Couleur.NOIR && this.getY()-yFinal==-1 && (xFinal == this.getX()))
+                    ||(this.getCouleur()== Couleur.BLANC && this.getY()-yFinal==1 && (xFinal == this.getX())));
         }
         return false;
     }

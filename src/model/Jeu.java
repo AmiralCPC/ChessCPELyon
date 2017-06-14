@@ -35,11 +35,24 @@ public class Jeu implements Game {
     @Override
     public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
         Pieces piece = findPiece(xInit,yInit);
+        boolean flag;
+
         if(piece != null){
 
-            return piece.move(xFinal,yFinal);
+            flag = piece.move(xFinal,yFinal);
+
+            if(flag && piece.getName()=="Pion"){
+                if ((piece.getCouleur()==Couleur.BLANC && yFinal == 0)||(piece.getCouleur()==Couleur.NOIR && yFinal == 7))
+                    piece = promotion(piece);
+            }
+
+            return flag;
         }
         return false;
+    }
+
+    public Pieces promotion(Pieces promopion){
+        return new Reine(promopion.getCouleur(), new Coord(promopion.getX(),promopion.getY()));
     }
 
     @Override
