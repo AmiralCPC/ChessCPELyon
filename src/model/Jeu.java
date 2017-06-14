@@ -43,8 +43,7 @@ public class Jeu implements Game {
     public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
         Pieces piece = findPiece(xInit,yInit);
         if(piece != null){
-            if(isCatchOk(xFinal,yFinal))
-                capture(xFinal,yFinal);
+
             return piece.move(xFinal,yFinal);
         }
         return false;

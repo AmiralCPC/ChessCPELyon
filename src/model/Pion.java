@@ -29,6 +29,9 @@ public class Pion extends AbstractPiece implements Pieces{
     @Override
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
 
+        if(isCatchOk)
+            return true;
+
         if((xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8)){
 
             //Verification premier mouvement pion
