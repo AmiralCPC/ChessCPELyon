@@ -58,14 +58,14 @@ public class Echiquier implements BoardGames{
 
     public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
         boolean isCatch = tourBlanc ? jeuNoir.isPieceHere(xFinal,yFinal):jeuBlanc.isPieceHere(xFinal,yFinal);
+        if(isCatch){
+            boolean catched = tourBlanc? jeuNoir.capture(xFinal,yFinal):jeuBlanc.capture(xFinal,yFinal);
+            if(!catched)
+                return false;
+        }
         boolean ret = this.tourBlanc?this.jeuBlanc.move(xInit, yInit, xFinal, yFinal)
                 :this.jeuNoir.move(xInit, yInit, xFinal, yFinal);
-        if(isCatch){
-            if(tourBlanc)
-                jeuNoir.capture(xFinal,yFinal);
-            else
-                jeuBlanc.capture(xFinal,yFinal);
-        }
+
         if(ret)
             this.switchJoueur();
         return ret;
