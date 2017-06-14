@@ -29,8 +29,10 @@ public class Pion extends AbstractPiece implements Pieces{
     @Override
     public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) {
 
-        if(isCatchOk)
+        if(isCatchOk(xFinal,yFinal))
             return true;
+        else if(isCatchOk && xFinal == getX())
+            return false;
 
         if((xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8)){
 
@@ -59,7 +61,7 @@ public class Pion extends AbstractPiece implements Pieces{
     public List<Coord> getPathCoords(int xFinal, int yFinal) {
         int j = this.getCouleur() == Couleur.NOIR?1:-1;
         List<Coord> coords = new LinkedList<Coord>();
-        for(int i=1;i<Math.abs(yFinal-this.getY());i++){
+        for(int i=1;i<=Math.abs(yFinal-this.getY());i++){
             coords.add(new Coord(this.getX(), this.getY()+ j*i));
         }
         return coords;

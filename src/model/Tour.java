@@ -32,7 +32,7 @@ public class Tour extends AbstractPiece implements Pieces{
         boolean vertical = yFinal != y;
         int sens = y<yFinal || x<xFinal ? 1:-1;
         int distance = vertical ? Math.abs(y-yFinal) : Math.abs(x-xFinal);
-        for(int i = 1; i<distance; i++){
+        for(int i = 1; i<=distance; i++){
             if(vertical)
                 coords.add(new Coord(x,y+i*sens));
             else

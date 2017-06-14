@@ -47,7 +47,7 @@ public class Echiquier implements BoardGames{
     }
 
     public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal) {
-        boolean isCatch = tourBlanc ? jeuBlanc.isCatchOk(xFinal,yFinal):jeuNoir.isCatchOk(xFinal,yFinal);
+        boolean isCatch = tourBlanc ? jeuNoir.isPieceHere(xFinal,yFinal):jeuBlanc.isPieceHere(xFinal,yFinal);
         boolean ret = (this.tourBlanc?
                 this.jeuBlanc.isMoveOk(xInit, yInit, xFinal, yFinal, isCatch, false)
                 :this.jeuNoir.isMoveOk(xInit, yInit, xFinal, yFinal,isCatch, false));
@@ -57,7 +57,7 @@ public class Echiquier implements BoardGames{
     }
 
     public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
-        boolean isCatch = tourBlanc ? jeuBlanc.isCatchOk(xFinal,yFinal):jeuNoir.isCatchOk(xFinal,yFinal);
+        boolean isCatch = tourBlanc ? jeuNoir.isPieceHere(xFinal,yFinal):jeuBlanc.isPieceHere(xFinal,yFinal);
         boolean ret = this.tourBlanc?this.jeuBlanc.move(xInit, yInit, xFinal, yFinal)
                 :this.jeuNoir.move(xInit, yInit, xFinal, yFinal);
         if(isCatch){

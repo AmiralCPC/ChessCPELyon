@@ -36,7 +36,7 @@ public class Reine extends AbstractPiece implements Pieces {
         if(y!= yFinal && x!=xFinal){
             int i = x<xFinal? 1:-1;
             int j = y<yFinal? 1:-1;
-            while(x != xFinal-i && y !=yFinal-j){
+            while(x != xFinal && y !=yFinal){
                 x += i;
                 y += j;
                 coords.add(new Coord(x,y));
@@ -47,7 +47,7 @@ public class Reine extends AbstractPiece implements Pieces {
             boolean vertical = yFinal != y;
             int sens = y<yFinal || x<xFinal ? 1:-1;
             int distance = vertical ? Math.abs(y-yFinal) : Math.abs(x-xFinal);
-            for(int i = 1; i<distance; i++){
+            for(int i = 1; i<=distance; i++){
                 if(vertical)
                     coords.add(new Coord(x,y+i*sens));
                 else

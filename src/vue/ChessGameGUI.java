@@ -1,6 +1,5 @@
 package vue;
 
-import controler.ChessGameControler;
 import controler.ChessGameControlers;
 import model.Coord;
 import model.PieceIHM;
@@ -39,16 +38,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         chessBoard.setPreferredSize( dim );
         chessBoard.setBounds(0, 0, dim.width, dim.height);
 
-        for (int i = 0; i < 64; i++) {
-            JPanel square = new JPanel( new BorderLayout() );
-            chessBoard.add( square );
-            square.setName(""+i);
-            int row = (i / 8) % 2;
-            if (row == 0)
-                square.setBackground( i % 2 == 0 ? Color.black : Color.white );
-            else
-                square.setBackground( i % 2 == 0 ? Color.white : Color.black );
-        }
+
 
     }
 
@@ -82,7 +72,6 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         boolean isPlayerOk;
         boolean isMoveGood;
         JPanel aDelete;
-
         if(chessPiece == null) return;
 
         chessPiece.setVisible(false);
@@ -103,6 +92,10 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
                 aDelete = (JPanel) chessBoard.getComponent(nbCase);
                 aDelete.removeAll();
             }
+        } else {
+            ((JPanel) chessBoard.getComponent(nbCase)).removeAll();
+            ((JPanel) chessBoard.getComponent(nbCase)).add(chessPiece);
+            chessPiece.setVisible(true);
         }
     }
 
@@ -129,6 +122,17 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         JPanel panel;
         JLabel image;
         int nbCase;
+        chessBoard.removeAll();
+        for (int i = 0; i < 64; i++) {
+            JPanel square = new JPanel( new BorderLayout() );
+            chessBoard.add( square );
+            square.setName(""+i);
+            int row = (i / 8) % 2;
+            if (row == 0)
+                square.setBackground( i % 2 == 0 ? Color.black : Color.white );
+            else
+                square.setBackground( i % 2 == 0 ? Color.white : Color.black );
+        }
         for(PieceIHM piece:piecesIHM){
             path = ChessImageProvider.getImageFile(piece.getNamePiece(),piece.getCouleur());
             nbCase= piece.getY()*8+piece.getX();
