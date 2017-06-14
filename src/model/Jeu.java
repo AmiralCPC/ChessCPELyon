@@ -46,6 +46,8 @@ public class Jeu implements Game {
                     promotion(piece);
             }
 
+            if(flag)
+                System.out.println("Deplacement effectué de "+piece.getName()+" "+piece.getCouleur());
             return flag;
         }
         return false;
@@ -53,13 +55,16 @@ public class Jeu implements Game {
 
     public void promotion(Pieces promopion){
         pieces.add(new Reine(this.couleur,new Coord(promopion.getX(),promopion.getY())));
+        System.out.println("Promotion de "+promopion.getName()+" "+promopion.getCouleur());
         promopion.capture();
     }
 
     @Override
     public boolean capture(int xCatch, int yCatch) {
+        boolean flag;
 
         if(isPieceHere(xCatch, yCatch)){
+            System.out.println("Capture de " + this.findPiece(xCatch, yCatch).getName() + " " + this.findPiece(xCatch, yCatch).getCouleur());
             return this.findPiece(xCatch, yCatch).capture();
         }
         return false;
